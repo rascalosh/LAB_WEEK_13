@@ -1,9 +1,12 @@
 package com.example.test_lab_week_12.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
+@Entity(tableName = "movies", primaryKeys = [("id")])
+
 data class Movie(
     val adult: Boolean = false,
     val backdrop_path: String? = null,
@@ -25,4 +28,5 @@ data class Movie(
     @field:Json(name = "vote_count")
     val voteCount: Int = 0
 )
+
 

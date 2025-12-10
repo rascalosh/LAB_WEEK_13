@@ -2,6 +2,7 @@ package com.example.test_lab_week_12
 
 import android.app.Application
 import com.example.test_lab_week_12.api.MovieService
+import com.example.test_lab_week_12.database.MovieDatabase
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -21,7 +22,9 @@ class MovieApplication : Application() {
         val movieService = retrofit.create(
             MovieService::class.java
         )
+        val movieDatabase =
+            MovieDatabase.getInstance(applicationContext)
 // create a MovieRepository instance
-        movieRepository = MovieRepository(movieService)
+        movieRepository = MovieRepository(movieService, movieDatabase)
     }
 }
